@@ -42,6 +42,8 @@ func ()
     return 0
 }
 
+set -x
+
 time_out 1 func 200
 echo RET $?
 time_out 10 func 200
