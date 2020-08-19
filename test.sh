@@ -43,5 +43,8 @@ func ()
 }
 
 time_out 1 func 200
+echo RET $?
 time_out 10 func 200
+echo RET $?
 time_out 0.0001 func 20000
+echo RET $?
