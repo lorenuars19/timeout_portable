@@ -2,6 +2,7 @@
 time_out_clean_up()
 {
     trap - ALRM
+    echo KILL ${a[@]}
     kill -ALRM ${a[@]} 2>/dev/null
     kill $! 2>/dev/null &&
       return 124
