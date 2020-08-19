@@ -1,10 +1,10 @@
 #!/bin/bash
 time_out_clean_up()
 {
-    trap - ALRM               #reset handler to default
-    kill -ALRM $a 2>/dev/null #stop timer subshell if running
-    kill $! 2>/dev/null &&    #kill last job
-      return 124                #exit with 124 if it was running
+    trap - ALRM
+    kill -ALRM ${a[@]} 2>/dev/null
+    kill $! 2>/dev/null &&
+      return 124
 }
 
 time_out_watcher()
@@ -16,7 +16,7 @@ time_out_watcher()
 
 time_out ()
 {
-    time_out_watcher $1& a=$!
+    time_out_watcher $1& a+=( $! )
     shift
     trap "time_out_clean_up" ALRM INT
     "$@"& wait $!; RET=$?
