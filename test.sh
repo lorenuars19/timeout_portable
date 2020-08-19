@@ -40,8 +40,6 @@ func ()
     return 0
 }
 
-for (( x = 0 ; x < 10 ; x++ ))
-do
-
-    time_out 1 func 200
-done
+time_out 1 func 200
+time_out 10 func 200
+time_out 0.0001 func 20000
